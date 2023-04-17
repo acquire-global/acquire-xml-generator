@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Settings>
+	<HasHeader>true</HasHeader>
+	<AppendMissingColumns>false</AppendMissingColumns>
+	<SkipRows>0</SkipRows>
+	<ColumnDelimiter>,</ColumnDelimiter>
+	<RowDelimiter>\n</RowDelimiter>
+	<TextDelimiter>"</TextDelimiter>
+	<Encoding>UTF8</Encoding>
+	<Mappings>
+		<Mapping MaxLength="100" DataType="text" DestinationName="vendorName" DestinationIndex="6"
+			SourceName="brand" SourceIndex="0" />
+		<Mapping MaxLength="50" DataType="text" DestinationName="vendorCode" DestinationIndex="1"
+			SourceName="manufacturerCode" SourceIndex="1" />
+		<Mapping DataType="text" DestinationName="name" DestinationIndex="2" SourceName="name"
+			SourceIndex="2" />
+		<Mapping DataType="number" DestinationName="buy" DestinationIndex="4" SourceName="buy"
+			SourceIndex="3" />
+		<Mapping DataType="number" DestinationName="stockLevel1" DestinationIndex="8" SourceName="stock"
+			SourceIndex="4" />
+		<Mapping DataType="number" DestinationName="rrp" DestinationIndex="5" SourceName="rrp"
+			SourceIndex="5" />
+		<Mapping DataType="text" DestinationName="description" DestinationIndex="3" AllowMarkup="true"
+			SourceName="description" SourceIndex="6" />
+		<Mapping DataType="text" DestinationName="imageurl" DestinationIndex="15" SourceName="imageUrl"
+			SourceIndex="7" />
+		<Mapping MaxLength="100" DataType="text" DestinationName="category1" DestinationIndex="7"
+			SourceName="category" SourceIndex="8" />
+		<Mapping MaxLength="50" DataType="text" DestinationName="suppliercode" DestinationIndex="0"
+			SourceName="supplierCode" SourceIndex="9" />
+		<Mapping DataType="text" DestinationName="features" DestinationIndex="13" AllowMarkup="true"
+			SourceName="features" SourceIndex="10" />
+		<Mapping DataType="text" DestinationName="specifications" DestinationIndex="14"
+			AllowMarkup="true" SourceName="specifications" SourceIndex="11" />
+		<Mapping DataType="text" DestinationName="stocketa" DestinationIndex="9" SourceName="eta"
+			SourceIndex="12" />
+		<Mapping DataType="text" DestinationName="warranty" DestinationIndex="11" SourceName="warranty"
+			SourceIndex="13" />
+		<Mapping DataType="text" DestinationName="weight" DestinationIndex="10" SourceName="weight"
+			SourceIndex="14" />
+		<Mapping DataType="number" DestinationName="gtin" DestinationIndex="20" SourceName="gtin"
+			SourceIndex="15" />
+		<Mapping DataType="text" DestinationName="colour" DestinationIndex="12" SourceName="colour"
+			SourceIndex="16" />
+		<Mapping DataType="text" DestinationName="accessories" DestinationIndex="18"
+			SourceName="accessories" SourceIndex="17" />
+		<Mapping DataType="text" DestinationName="vendorUrl" DestinationIndex="16"
+			SourceName="vendorUrl" SourceIndex="18" />
+		<Mapping DataType="text" DestinationName="supplierurl" DestinationIndex="17"
+			SourceName="supplierurl" SourceIndex="19" />
+		<Mapping DataType="text" DestinationName="shiptype" DestinationIndex="19" SourceName="shipping"
+			SourceIndex="20" />
+		<Mapping DestinationIndex="32" DestinationName="minQuantity" DataType="number"
+			SourceName="minLicenseQuantity" SourceIndex="21" />
+		<Mapping DestinationIndex="33" DestinationName="maxQuantity" DataType="number"
+			SourceName="maxLicenseQuantity" SourceIndex="22" />
+		<Mapping DestinationIndex="34" DestinationName="requiresLicenseDetails" DataType="number"
+			SourceName="requiresEndUserDetails" SourceIndex="23" />
+		<Mapping MaxLength="100" DataType="text" DestinationName="category2" DestinationIndex="21" />
+		<Mapping MaxLength="100" DataType="text" DestinationName="category3" DestinationIndex="22" />
+		<Mapping DataType="number" DestinationName="stockLevel2" DestinationIndex="23" />
+		<Mapping DataType="number" DestinationName="stockLevel3" DestinationIndex="24" />
+		<Mapping DataType="number" DestinationName="stockLevel4" DestinationIndex="25" />
+		<Mapping DataType="number" DestinationName="stockLevel5" DestinationIndex="26" />
+		<Mapping DataType="number" DestinationName="stockLevel6" DestinationIndex="27" />
+		<Mapping DataType="number" DestinationName="stockLevel7" DestinationIndex="28" />
+		<Mapping DataType="number" DestinationName="stockLevel8" DestinationIndex="29" />
+		<Mapping DataType="number" DestinationName="stockLevel9" DestinationIndex="30" />
+		<Mapping DataType="text" DestinationName="stockText" DestinationIndex="31" />
+		<Mapping SourceIndex="24" Skip="true" />
+	</Mappings>
+</Settings>
