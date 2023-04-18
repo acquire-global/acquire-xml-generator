@@ -47,7 +47,7 @@ type DestinationDetails = {
 	isRequired?: boolean
 }
 
-const destinations: Record<DestinationName, DestinationDetails> = {
+export const destinations: Record<DestinationName, DestinationDetails> = {
 	suppliercode: {
 		index: 0,
 		name: DestinationName.suppliercode,
