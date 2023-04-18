@@ -1,6 +1,6 @@
 import { XMLBuilder, XmlBuilderOptionsOptional } from 'fast-xml-parser'
 import { SupplierFeedSettings, SupplierSettingsConfig } from './supplier-feeds'
-export { destinations, Destination } from './supplier-feeds'
+export { destinations, Destination, MappingConfig } from './supplier-feeds'
 
 const options: XmlBuilderOptionsOptional = {
 	attributeNamePrefix: '@',

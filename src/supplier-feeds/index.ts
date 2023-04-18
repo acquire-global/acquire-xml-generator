@@ -198,7 +198,7 @@ const requiredDestinations = Object.values(destinations).filter(
 	(d) => d.isRequired
 )
 
-type MappingConfig = {
+export type MappingConfig = {
 	sourceIndex: number
 	sourceName?: string
 	destination: keyof typeof DestinationName
