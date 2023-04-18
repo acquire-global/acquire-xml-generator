@@ -38,7 +38,7 @@ enum DestinationName {
 	requiresLicenseDetails = 'requiresLicenseDetails',
 }
 
-type DestinationDetails = {
+export type Destination = {
 	index: number
 	name: DestinationName
 	dataType: DataType
@@ -47,7 +47,7 @@ type DestinationDetails = {
 	isRequired?: boolean
 }
 
-export const destinations: Record<DestinationName, DestinationDetails> = {
+export const destinations: Record<DestinationName, Destination> = {
 	suppliercode: {
 		index: 0,
 		name: DestinationName.suppliercode,
@@ -217,13 +217,13 @@ export type SupplierSettingsConfig = {
 }
 
 class SupplierColumnMapping {
-	'@DestinationIndex'?: DestinationDetails['index']
+	'@DestinationIndex'?: Destination['index']
 	'@DestinationName'?: DestinationName
 	'@SourceIndex'?: MappingConfig['sourceIndex']
 	'@SourceName'?: MappingConfig['sourceName']
-	'@DataType'?: DestinationDetails['dataType']
-	'@MaxLength'?: DestinationDetails['maxLength']
-	'@AllowMarkup'?: DestinationDetails['allowMarkup']
+	'@DataType'?: Destination['dataType']
+	'@MaxLength'?: Destination['maxLength']
+	'@AllowMarkup'?: Destination['allowMarkup']
 
 	constructor(config: MappingConfig) {
 		const destination = destinations[config.destination]
