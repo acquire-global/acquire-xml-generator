@@ -201,7 +201,7 @@ const requiredDestinations = Object.values(destinations).filter(
 export type MappingConfig = {
 	sourceIndex: number
 	sourceName?: string
-	destination: keyof typeof DestinationName
+	destination?: keyof typeof DestinationName
 	skip?: boolean
 }
 
@@ -219,21 +219,30 @@ export type SupplierSettingsConfig = {
 class SupplierColumnMapping {
 	'@DestinationIndex'?: Destination['index']
 	'@DestinationName'?: DestinationName
-	'@SourceIndex'?: MappingConfig['sourceIndex']
+	'@SourceIndex': MappingConfig['sourceIndex']
 	'@SourceName'?: MappingConfig['sourceName']
 	'@DataType'?: Destination['dataType']
 	'@MaxLength'?: Destination['maxLength']
 	'@AllowMarkup'?: Destination['allowMarkup']
+	'@Skip'?: boolean
 
 	constructor(config: MappingConfig) {
-		const destination = destinations[config.destination]
-		this['@DestinationIndex'] = destination.index
-		this['@DestinationName'] = destination.name
+		if (!config.destination && !config.skip) {
+			throw new Error(
+				`Destination is required for column ${config.sourceIndex}${
+					config.sourceName ? `(${config.sourceName})` : ''
+				} unless the column is skipped`
+			)
+		}
 		this['@SourceIndex'] = config.sourceIndex
+		this['@Skip'] = config.skip
 		this['@SourceName'] = config.sourceName
-		this['@DataType'] = destination.dataType
-		this['@MaxLength'] = destination.maxLength
-		this['@AllowMarkup'] = destination.allowMarkup
+		const destination = config.destination && destinations[config.destination]
+		this['@DestinationIndex'] = destination?.index
+		this['@DestinationName'] = destination?.name
+		this['@DataType'] = destination?.dataType
+		this['@MaxLength'] = destination?.maxLength
+		this['@AllowMarkup'] = destination?.allowMarkup
 	}
 }
 

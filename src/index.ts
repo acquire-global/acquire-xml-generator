@@ -9,6 +9,7 @@ const options: XmlBuilderOptionsOptional = {
 	unpairedTags: ['Mapping', 'xml'],
 	format: true,
 	suppressUnpairedNode: false,
+	suppressBooleanAttributes: false,
 }
 
 const xmlBuilder = new XMLBuilder(options)
