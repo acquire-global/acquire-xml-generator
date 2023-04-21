@@ -199,7 +199,7 @@ const requiredDestinations = Object.values(destinations).filter(
 )
 
 export type MappingConfig = {
-	sourceIndex: number
+	sourceIndex?: number
 	sourceName?: string
 	destination?: keyof typeof DestinationName
 	skip?: boolean
@@ -219,7 +219,7 @@ export type SupplierSettingsConfig = {
 class SupplierColumnMapping {
 	'@DestinationIndex'?: Destination['index']
 	'@DestinationName'?: DestinationName
-	'@SourceIndex': MappingConfig['sourceIndex']
+	'@SourceIndex'?: MappingConfig['sourceIndex']
 	'@SourceName'?: MappingConfig['sourceName']
 	'@DataType'?: Destination['dataType']
 	'@MaxLength'?: Destination['maxLength']
@@ -246,6 +246,32 @@ class SupplierColumnMapping {
 	}
 }
 
+const checkRequiredDestinations = (mappings: MappingConfig[]) => {
+	const missingDestinations = requiredDestinations.filter(
+		(destination) =>
+			!mappings.some((mapping) => mapping.destination === destination.name)
+	)
+	if (missingDestinations.length > 0) {
+		throw new Error(
+			`Missing required columns: ${missingDestinations
+				.map((d) => d.name)
+				.join(', ')}`
+		)
+	}
+}
+
+const addMissingDestinations = (mappings: MappingConfig[]): MappingConfig[] => {
+	const missingDestinations = Object.values(destinations).filter(
+		(destination) =>
+			!mappings.some((mapping) => mapping.destination === destination.name)
+	)
+	return mappings.concat(
+		missingDestinations.map((destination) => ({
+			destination: destination.name,
+		}))
+	)
+}
+
 export class SupplierFeedSettings {
 	Settings: {
 		HasHeader?: boolean
@@ -260,23 +286,11 @@ export class SupplierFeedSettings {
 		}
 	}
 
-	private checkRequiredDestinations(mappings: MappingConfig[]) {
-		const missingDestinations = requiredDestinations.filter(
-			(destination) =>
-				!mappings.some((mapping) => mapping.destination === destination.name)
-		)
-		if (missingDestinations.length > 0) {
-			throw new Error(
-				`Missing required columns: ${missingDestinations
-					.map((d) => d.name)
-					.join(', ')}`
-			)
-		}
-	}
-
 	constructor(config: SupplierSettingsConfig) {
 		try {
-			this.checkRequiredDestinations(config.mappings)
+			checkRequiredDestinations(config.mappings)
+
+			const allMappings = addMissingDestinations(config.mappings)
 
 			this.Settings = {
 				HasHeader: config.hasHeader,
@@ -287,7 +301,7 @@ export class SupplierFeedSettings {
 				TextDelimiter: config.textDelimiter ?? '"',
 				Encoding: config.encoding,
 				Mappings: {
-					Mapping: config.mappings.map(
+					Mapping: allMappings.map(
 						(mapping) => new SupplierColumnMapping(mapping)
 					),
 				},
