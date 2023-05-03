@@ -1,6 +1,6 @@
 {
 	"name": "acquire-xml-generator",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"description": "Tool for generating XML files for various Acquire systems",
 	"author": "Geoff Talbot",
 	"license": "MIT",

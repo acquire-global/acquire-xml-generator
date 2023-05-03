@@ -212,7 +212,7 @@ export type SupplierSettingsConfig = {
 	columnDelimiter?: string
 	rowDelimiter?: string
 	textDelimiter?: string
-	encoding?: 'UTF8' | 'ASCII'
+	encoding?: 'UTF-8' | 'ASCII'
 	mappings: MappingConfig[]
 }
 
@@ -280,7 +280,7 @@ export class SupplierFeedSettings {
 		ColumnDelimiter?: string
 		RowDelimiter?: string
 		TextDelimiter?: string
-		Encoding?: 'UTF8' | 'ASCII'
+		Encoding?: 'UTF-8' | 'ASCII'
 		Mappings: {
 			Mapping: SupplierColumnMapping[]
 		}
