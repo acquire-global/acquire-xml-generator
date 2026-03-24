@@ -195,7 +195,7 @@ export const destinations: Record<DestinationName, Destination> = {
 }
 
 const requiredDestinations = Object.values(destinations).filter(
-	(d) => d.isRequired
+	(d) => d.isRequired,
 )
 
 export type MappingConfig = {
@@ -231,7 +231,7 @@ class SupplierColumnMapping {
 			throw new Error(
 				`Destination is required for column ${config.sourceIndex}${
 					config.sourceName ? `(${config.sourceName})` : ''
-				} unless the column is skipped`
+				} unless the column is skipped`,
 			)
 		}
 		this['@SourceIndex'] = config.sourceIndex
@@ -249,13 +249,13 @@ class SupplierColumnMapping {
 const checkRequiredDestinations = (mappings: MappingConfig[]) => {
 	const missingDestinations = requiredDestinations.filter(
 		(destination) =>
-			!mappings.some((mapping) => mapping.destination === destination.name)
+			!mappings.some((mapping) => mapping.destination === destination.name),
 	)
 	if (missingDestinations.length > 0) {
 		throw new Error(
 			`Missing required columns: ${missingDestinations
 				.map((d) => d.name)
-				.join(', ')}`
+				.join(', ')}`,
 		)
 	}
 }
@@ -263,12 +263,12 @@ const checkRequiredDestinations = (mappings: MappingConfig[]) => {
 const addMissingDestinations = (mappings: MappingConfig[]): MappingConfig[] => {
 	const missingDestinations = Object.values(destinations).filter(
 		(destination) =>
-			!mappings.some((mapping) => mapping.destination === destination.name)
+			!mappings.some((mapping) => mapping.destination === destination.name),
 	)
 	return mappings.concat(
 		missingDestinations.map((destination) => ({
 			destination: destination.name,
-		}))
+		})),
 	)
 }
 
@@ -297,12 +297,12 @@ export class SupplierFeedSettings {
 				AppendMissingColumns: config.appendMissingColumns,
 				SkipRows: config.skipRows,
 				ColumnDelimiter: config.columnDelimiter,
-				RowDelimiter: config.rowDelimiter ?? '\\n',
+				RowDelimiter: config.rowDelimiter ?? '\\r\\n',
 				TextDelimiter: config.textDelimiter ?? '"',
 				Encoding: config.encoding,
 				Mappings: {
 					Mapping: allMappings.map(
-						(mapping) => new SupplierColumnMapping(mapping)
+						(mapping) => new SupplierColumnMapping(mapping),
 					),
 				},
 			}

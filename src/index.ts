@@ -1,8 +1,8 @@
-import { XMLBuilder, XmlBuilderOptionsOptional } from 'fast-xml-parser'
+import { XMLBuilder, XmlBuilderOptions } from 'fast-xml-parser'
 import { SupplierFeedSettings, SupplierSettingsConfig } from './supplier-feeds'
 export { destinations, Destination, MappingConfig } from './supplier-feeds'
 
-const options: XmlBuilderOptionsOptional = {
+const options: XmlBuilderOptions = {
 	attributeNamePrefix: '@',
 	ignoreAttributes: false,
 	processEntities: false,
@@ -15,7 +15,7 @@ const options: XmlBuilderOptionsOptional = {
 const xmlBuilder = new XMLBuilder(options)
 
 export const generateSupplierFeedSettings = (
-	config: SupplierSettingsConfig
+	config: SupplierSettingsConfig,
 ): string => {
 	return (`<?xml version="1.0" encoding="${config.encoding ?? 'UTF-8'}"?>\n` +
 		xmlBuilder.build(new SupplierFeedSettings(config))) as string
