@@ -4,9 +4,7 @@ This package facilitates the generation of various XML files formatted for use i
 
 ## Installation
 
-Install directly from github, e.g.
-
-    npm i github:acquire-global/acquire-xml-generator
+npm i @acquire/xml-generator
 
 ## Usage
 

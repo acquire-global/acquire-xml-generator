@@ -1,18 +1,29 @@
 {
-	"name": "acquire-xml-generator",
-	"version": "0.0.11",
+	"name": "@acquire-global/xml-generator",
+	"version": "1.0.0",
 	"description": "Tool for generating XML files for various Acquire systems",
 	"author": "Geoff Talbot",
 	"license": "MIT",
-	"main": "build/index.js",
-	"types": "build/index.d.ts",
+	"main": "dist/index.js",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.js"
+		}
+	},
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"test": "ts-node ./src/test.ts",
-		"build": "tsc"
+		"build": "tsc",
+		"prepublishOnly": "npm run build"
 	},
 	"keywords": [
 		"xml",
-		"generator"
+		"generator",
+		"acquire"
 	],
 	"devDependencies": {
 		"@types/node": "^18.15.11",
